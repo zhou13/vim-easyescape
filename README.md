@@ -1,8 +1,17 @@
 # vim-easyescape
 
+```
+_____                  _____                          
+ | ____|__ _ ___ _   _  | ____|___  ___ __ _ _ __   ___ 
+ |  _| / _` / __| | | | |  _| / __|/ __/ _` | '_ \ / _ \
+ | |__| (_| \__ \ |_| | | |___\__ \ (_| (_| | |_) |  __/
+ |_____\__,_|___/\__, | |_____|___/\___\__,_| .__/ \___|
+                 |___/                      |_|
+```
+
 Pull out your Escape key!
 
-`<ESC>/<C-[>/<C-C>` is hard to press?  Try `vim-easyescape`! `vim-easyescape` makes exiting insert mode easy and distraction free!
+`<ESC>/<C-[>/<C-C>` is hard to press?  Try `vim-easyescape`! `vim-easyescape` makes exiting insert mode easy and distraction free.
 
 ## Problems
 Traditionally, we need to use
