@@ -26,7 +26,7 @@ endif
 
 function! s:EasyescapeInsertCharPre()
     if has_key(g:easyescape_chars, v:char) == 0
-        let g:easyescape_current_chars = copy(g:easyescape_chars)
+        let s:current_chars = copy(g:easyescape_chars)
     endif
 endfunction
 
@@ -46,33 +46,33 @@ function! s:EasyescapeReadTimer()
 endfunction
 
 function! <SID>EasyescapeMap(char)
-    if g:easyescape_current_chars[a:char] == 0
-        let g:easyescape_current_chars = copy(g:easyescape_chars)
-        let g:easyescape_current_chars[a:char] = g:easyescape_current_chars[a:char] - 1
+    if s:current_chars[a:char] == 0
+        let s:current_chars = copy(g:easyescape_chars)
+        let s:current_chars[a:char] = s:current_chars[a:char] - 1
         call s:EasyescapeSetTimer()
         return a:char
     endif
 
     if s:EasyescapeReadTimer() > g:easyescape_timeout
-        let g:easyescape_current_chars = copy(g:easyescape_chars)
-        let g:easyescape_current_chars[a:char] = g:easyescape_current_chars[a:char] - 1
+        let s:current_chars = copy(g:easyescape_chars)
+        let s:current_chars[a:char] = s:current_chars[a:char] - 1
         call s:EasyescapeSetTimer()
         return a:char
     endif
 
-    let g:easyescape_current_chars[a:char] = g:easyescape_current_chars[a:char] - 1
-    for value in values(g:easyescape_current_chars)
+    let s:current_chars[a:char] = s:current_chars[a:char] - 1
+    for value in values(s:current_chars)
         if value > 0
             call s:EasyescapeSetTimer()
             return a:char
         endif
     endfor
 
-    let g:easyescape_current_chars = copy(g:easyescape_chars)
-    return "\<BS>\<ESC>"
+    let s:current_chars = copy(g:easyescape_chars)
+    return s:escape_sequence
 endfunction
 
-let g:easyescape_current_chars = copy(g:easyescape_chars)
+let s:current_chars = copy(g:easyescape_chars)
 
 augroup easyescape
     au!
@@ -89,3 +89,5 @@ if s:haspy3
 else
     let s:localtime = localtime()
 endif
+
+let s:escape_sequence = repeat("\<BS>", eval(join(values(g:easyescape_chars), "+"))-1) . "\<ESC>"

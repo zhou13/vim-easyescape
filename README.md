@@ -28,7 +28,7 @@ Plug "zhou13/vim-easyescape"
 
 ### Configuration 1: map of `jk` and `kj` (recommended)
 
-The unit of timeout is in ms.  A very small timeout makes a input of real `jk` possible (Python3 is required for this feature)!
+The unit of timeout is in ms.  A very small timeout makes an input of real `jk` or `kj` possible (Python3 is required for this feature)!
 ```
 let g:easyescape_chars = { "j": 1, "k": 1 }
 let g:easyescape_timeout = 100
