@@ -85,6 +85,7 @@ endfor
 
 if s:haspy3
     py3 from timeit import default_timer
+    py3 import vim
     call s:EasyescapeSetTimer()
 else
     let s:localtime = localtime()
