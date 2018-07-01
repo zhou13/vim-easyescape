@@ -21,7 +21,8 @@ if !exists("g:easyescape_timeout")
 endif
 
 if !s:haspy3 && g:easyescape_timeout < 2000
-    echoerr "Python3 is required when g:easyescape_timeout < 2000"
+    echomsg "Python3 is required when g:easyescape_timeout < 2000"
+    let g:easyescape_timeout = 2000
 endif
 
 function! s:EasyescapeInsertCharPre()
