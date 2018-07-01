@@ -1,6 +1,6 @@
-" easyescape.vim        Destroy your Escape key!
+" easyescape.vim        Pull out your Escape key!
 " Author:               Yichao Zhou (broken.zhou AT gmail)
-" Version:              0.1
+" Version:              0.2
 " ---------------------------------------------------------------------
 
 if &cp || exists("g:loaded_easyescape")
