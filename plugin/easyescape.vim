@@ -47,6 +47,9 @@ function! s:EasyescapeReadTimer()
 endfunction
 
 function! <SID>EasyescapeMap(char)
+    if exists("b:easyescape_disable") && b:easyescape_disable == 1
+        return a:char
+    endif
     if s:current_chars[a:char] == 0
         let s:current_chars = copy(g:easyescape_chars)
         let s:current_chars[a:char] = s:current_chars[a:char] - 1
@@ -93,3 +96,5 @@ else
 endif
 
 let s:escape_sequence = repeat("\<BS>", eval(join(values(g:easyescape_chars), "+"))-1) . "\<ESC>"
+
+" vim:set expandtab tabstop=4 shiftwidth=4:

@@ -53,6 +53,12 @@ let g:easyescape_timeout = 100
 cnoremap jj <ESC>
 ```
 
+### Disable easyescape based on filetype
+
+```
+autocmd FileType text,markdown call setbufvar(bufnr("%"), 'easyescape_disable', 1)
+```
+
 ## Dependency
 
 Python3 is required if timeout (`g:easyescape_timeout`) is less than 2000 ms because vim does not provide a way to fetch sub-second time.
