@@ -73,7 +73,19 @@ function! <SID>EasyescapeMap(char)
     endfor
 
     let s:current_chars = copy(g:easyescape_chars)
-    return s:escape_sequence
+
+    " Workaround for #3, might be less annoying but still not perfect
+    let current_line = getline(".")
+    let current_line_trimed  = substitute(current_line, '^\s*\(.\{-}\)\s*$', '\1', '')
+    let n_chars = eval(join(values(g:easyescape_chars), "+")) - 1
+
+    let seq = s:escape_sequence
+    if col(".") == len(current_line) + 1 && n_chars == len(current_line_trimed)
+        let seq = seq . "0D"
+    endif
+
+    return seq
+
 endfunction
 
 let s:current_chars = copy(g:easyescape_chars)
