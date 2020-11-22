@@ -81,7 +81,7 @@ function! <SID>EasyescapeMap(char)
 
     let seq = s:escape_sequence
     if col(".") == len(current_line) + 1 && n_chars == len(current_line_trimed)
-        let seq = seq . "0D"
+        let seq = seq . '0"_D'
     endif
 
     return seq
